@@ -3,7 +3,7 @@
 #include<locale.h>
 #include<ctype.h>
 void receberTabela(double *x,double *y,double *Inter,int *count); //função que recebe os valroes de X e f(X)
-void exibirTabela(double *x,double *y,double *Inter,int *count); //função que exibe todos os valores inseridos com também mostra o intervalo I
+void exibirTabela(double *x,double *y,double *Inter,int *count); //função que exibe todos os valores inseridos como também mostra o intervalo I
 void receberG(double *g,double *Inter);//função que recebe o valor de x à ser interpolado verificando com relação ao intervalo I
 void laGran(double *x,double *y,double *Inter,int *count,double *g);//função que executa a somatória e exibe o resultado Lk(x)
 double BLn(double *x,double *y,int *n,int *count,double *g);//função que faz o produtório
@@ -20,7 +20,9 @@ int main(){
 	exibirTabela(x,Fx,I,ptr_cont);
 	laGran(x,Fx,I,ptr_cont,ptr_g);
 	system("pause");
+	return 0;
 }
+
 void receberTabela(double *x,double *y,double *Inter,int *count){
 	char op='S',*ptr_op;
 	ptr_op=&op;
@@ -36,7 +38,7 @@ void receberTabela(double *x,double *y,double *Inter,int *count){
 			}
 		}
 		*count+=1;
-		if(*count>1){//verificação de continuidade. Ocorre em count>1 pois são nessesários pelomenos 2 pontos
+		if(*count>1){//verificação de continuidade. Ocorre em count>1 pois são nessesários pelo menos 2 pontos
 			do{
 			printf("\n\nDeseja continuar inserindo pontos para a interpolação? S-sim|N-não:\t");
 			fflush(stdin);
@@ -50,7 +52,8 @@ void receberTabela(double *x,double *y,double *Inter,int *count){
 	*Inter=*x;//primeiro valor do intervalo
 	Inter+=1;
 	*Inter=*(x+*count-1);//ultimo valor do intervalo
-}
+}//receberTabela
+
 void exibirTabela(double *x,double *y,double *Inter,int *count){
 	
 	int i;
@@ -64,7 +67,8 @@ void exibirTabela(double *x,double *y,double *Inter,int *count){
 	for(i=0;i<*count;i++){printf("\t%.3lf\t",*(y+i));//valor de f(x)
 	}	
 	printf("\n\nI=[%.3lf ; %.3lf]\n",*Inter,*(Inter+1));
-}
+}//exibirTabela
+
 void receberG(double *g,double *Inter){
 	printf("Insira o valor de X que deseja interpolar:\n");
 	do{
@@ -74,7 +78,8 @@ void receberG(double *g,double *Inter){
 			printf("\nO valor %.3lf Digitado não pertence ao Intervalo I[%.3lf ; %.3lf]\n",*g,*Inter,*(Inter+1));
 		}
 	}while(*g<*Inter || *g>*(Inter+1));
-}
+}//receberG
+
 void laGran(double *x,double *y,double *Inter,int *count, double *g){
 do{
 	receberG(g,Inter);
@@ -100,7 +105,8 @@ do{
 		if(toupper(*ptr_vef)=='N'){ break; //condição para quebrar o laço
 		}
 }while(*(Inter+1)>*Inter);
-}
+}//laGran
+
 double BLn(double *x,double *y,int *n,int *count,double *g){
 	int i;
 	double LnR=1,*ptr_LnR;//valor do dividendo
@@ -120,4 +126,4 @@ double BLn(double *x,double *y,int *n,int *count,double *g){
 		}
 	}
 	return ((*ptr_LnR)/(*ptr_Lnr));//retorno de Ln(x)
-}
+}//BLn
