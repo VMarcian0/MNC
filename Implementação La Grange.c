@@ -87,7 +87,7 @@ do{
 	ptr_Ln=&Ln;
 	ptr_laG=&laG;
 	for(i=0;i<*count;i++){
-		Ln=BLn(x,y,ptr_i,count,g);
+		Ln=BLn(x,y,ptr_i,count,g);//Li -> elemento que é usado na somatória
 		*ptr_laG+=(*(y+i))*(*ptr_Ln);
 	}
 	printf("\nLk(x) = %.3lf onde x = %.3lf\n",*ptr_laG,*g);
@@ -119,5 +119,5 @@ double BLn(double *x,double *y,int *n,int *count,double *g){
 		else{(*ptr_Lnr)*=(*(x+*n)-*(x+i));//operação do divisor
 		}
 	}
-	return ((*ptr_LnR)/(*ptr_Lnr));
+	return ((*ptr_LnR)/(*ptr_Lnr));//retorno de Ln(x)
 }
