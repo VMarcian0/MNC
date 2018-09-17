@@ -1,9 +1,8 @@
-//Victor Marciano
 #include<stdio.h>
 #include<stdlib.h>
 #include<locale.h>
 #include<ctype.h>
-void receberTabela(double *x,double *y,double *Inter,int *count);
+void receberTabela(double *x,double *y,double *Inter,int *count); //função que recebe os valroes de X e f(X)
 void exibirTabela(double *x,double *y,double *Inter,int *count); //função que exibe todos os valores inseridos com também mostra o intervalo I
 void receberG(double *g,double *Inter);//função que recebe o valor de x à ser interpolado verificando com relação ao intervalo I
 void laGran(double *x,double *y,double *Inter,int *count,double *g);//função que executa a somatória e exibe o resultado Lk(x)
